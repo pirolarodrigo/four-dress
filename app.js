@@ -256,9 +256,11 @@
       const total = cart.some(item => item.price == null)
         ? "A consultar"
         : money(cart.reduce((sum, item) => sum + (item.price || 0) * item.qty, 0));
-      const body = `Hola FOUR DRESS, quiero realizar este pedido:\n\n${lines}\n\nSubtotal: ${total}\n\nNombre: ${data.get("name")}\nEmail: ${data.get("email")}\nTeléfono: ${data.get("phone")}\nComentarios: ${data.get("notes") || "Sin comentarios"}\n\nQuedo atento/a a la confirmación de disponibilidad y medios de pago.`;
-      window.location.href = `mailto:alanlacombe01@gmail.com?subject=${encodeURIComponent("Pedido FOUR DRESS")}&body=${encodeURIComponent(body)}`;
+      const body = `Hola FOUR DRESS! Quiero realizar este pedido:\n\n${lines}\n\nTotal: ${total}\n\nNombre: ${data.get("name")}\nEmail: ${data.get("email")}\nTeléfono: ${data.get("phone")}\nComentarios: ${data.get("notes") || "Sin comentarios"}\n\nQuedo atento/a a la confirmación de disponibilidad, envío y medios de pago.`;
+      const whatsappNumber = "5493437453535";
+      const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(body)}`;
       closeCheckout();
+      window.location.href = whatsappUrl;
     });
 
     $("#menuToggle").addEventListener("click", () => $(".main-nav").classList.toggle("open"));
