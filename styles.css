@@ -5,3 +5,71 @@
 
 /* Evita que capas cerradas intercepten clics. */
 .cart-backdrop{pointer-events:none}.cart-open .cart-backdrop{pointer-events:auto}.product-modal:not(.open),.checkout-modal:not(.open){pointer-events:none}.product-modal.open,.checkout-modal.open{pointer-events:auto}
+
+
+/* FOUR DRESS — refresh claro + perchero interactivo */
+:root{--bg:#f4f4f1;--panel:#fff;--panel2:#e9e9e5;--white:#151515;--muted:#686868;--line:#d7d7d2;--yellow:#3157f5}
+body{background:var(--bg);color:#151515}
+.announcement{background:#3157f5;color:#fff}
+.site-header{background:#fff;border-bottom-color:#e4e4df}
+.brand img{mix-blend-mode:multiply}
+.main-nav a{color:#555}.main-nav a:hover,.cart-trigger:hover{color:#3157f5}
+.cart-trigger{color:#151515}.cart-count{background:#3157f5;color:#fff}
+.menu-toggle{color:#151515}
+.hero:before{border-color:#e1e1dc}
+.hero-description,.section-intro{color:#666}
+.hero-art{background:#fff;border-color:#e1e1dc;box-shadow:0 18px 50px rgba(20,20,20,.08)}
+.hero-art:before{border-color:#e8e8e4}
+.hero-art img{filter:none}
+.hero-art:hover img{filter:saturate(1.08)}
+.hero-index,.hero-bottomline{color:#777}
+.hero-stamp{color:#3157f5;text-shadow:4px 4px #fff}
+.ticker{border-color:#d8d8d2;color:#171717}
+.ticker b{color:#3157f5}
+.collection-tools{border-bottom-color:#d7d7d2}
+.filter{color:#777}.filter.active,.filter:hover{color:#151515}
+.rack-scene{background:linear-gradient(180deg,#fff 0%,#f0f0ed 100%);border:1px solid #deded8;border-radius:3px;box-shadow:0 20px 55px rgba(0,0,0,.055)}
+.rack-top{color:#858585}
+.rack-rail{background:linear-gradient(180deg,#d7d7d7,#777 55%,#444);box-shadow:0 5px 12px rgba(0,0,0,.12)}
+.rail-cap{background:#555}
+.product-grid{display:flex;align-items:flex-end;gap:22px;overflow-x:auto;overflow-y:hidden;padding:0 14px 18px;scroll-snap-type:x mandatory;scrollbar-width:thin;scrollbar-color:#3157f5 #e4e4df}
+.product-card{flex:0 0 clamp(180px,20%,245px);padding:0 8px 14px;scroll-snap-align:center;transform-origin:50% 10%}
+.product-card:hover{transform:translateY(-10px) scale(1.025);z-index:3}
+.hanger{height:34px;margin-bottom:0}
+.hanger:before{border-color:#777}
+.hanger:after{border-color:#777}
+.product-visual{height:300px;background:#f7f7f5;border:1px solid #e3e3df;box-shadow:0 8px 22px rgba(0,0,0,.055)}
+.product-visual img{padding:7px;filter:none;transform-origin:50% 50%}
+.product-card:hover .product-visual img{transform:scale(1.07) rotateY(0deg);filter:contrast(1.03)}
+.product-number{background:#3157f5;color:#fff}
+.product-open{left:8px;right:8px;bottom:8px;width:auto;height:32px;background:#151515;color:#fff;font-size:8px;letter-spacing:.12em}
+.product-card:hover .product-open{opacity:1}
+.product-name{color:#171717}.product-variant{color:#777}.product-price{color:#3157f5}
+.rack-floor{background:#d3d3ce}
+.collection-footnote{color:#777}.collection-footnote span{color:#3157f5}
+.manifesto{background:#e9e9e5;border-color:#d7d7d2}
+.manifesto-mark{color:#d4d4cf}.manifesto-content>p:not(.eyebrow){color:#555}
+.manifesto-image{border-color:#fff}.manifesto-image img{filter:none}
+.text-link{border-color:#3157f5}
+.contact-links{border-color:#d7d7d2}.contact-links a{border-color:#d7d7d2}.contact-links a span{color:#777}
+.contact-links a:hover strong{color:#3157f5}
+footer{border-color:#d7d7d2;color:#777}.footer-brand{color:#151515}.footer-brand span{color:#3157f5}
+.cart-backdrop,.modal-backdrop{background:rgba(15,15,18,.48)}
+.cart-drawer,.modal-card,.checkout-card{background:#fff;border-color:#e0e0db;color:#151515}
+.cart-header{border-color:#e0e0db}.close-cart,.modal-close{color:#151515}
+.cart-row{border-color:#e8e8e3}.cart-row img{background:#f0f0ed}
+.cart-row button,.subtotal strong{color:#3157f5}
+.cart-note,.form-note{color:#777}
+.modal-image-wrap{background:#f2f2ef;border:1px solid #e5e5e0;position:relative;padding-bottom:52px}
+.modal-image-wrap img{min-height:320px}
+.modal-info label,.checkout-card label{color:#555}
+.modal-info select,.checkout-card input,.checkout-card textarea{background:#f7f7f5;border-color:#ddd;color:#151515}
+.modal-variant{color:#3157f5}
+.garment-views{position:absolute;bottom:12px;left:12px;right:12px;display:flex;justify-content:center;gap:7px}
+.garment-views button{border:1px solid #d1d1cb;background:#fff;color:#555;padding:9px 13px;font-size:8px;font-weight:800;letter-spacing:.1em;cursor:pointer}
+.garment-views button.active{background:#3157f5;border-color:#3157f5;color:#fff}
+.garment-views button:disabled{opacity:.35;cursor:not-allowed}
+.view-note{position:absolute;bottom:-3px;left:0;right:0;margin:0;text-align:center;font-size:8px;color:#777;transform:translateY(100%)}
+.toast{background:#3157f5;color:#fff}
+@media(max-width:850px){.product-card{flex-basis:clamp(175px,30%,230px)}}
+@media(max-width:600px){.product-grid{gap:12px;padding-left:5px;padding-right:5px}.product-card{flex-basis:68%;}.product-visual{height:270px}.rack-scene{padding:0 7px 18px}.modal-image-wrap{min-height:280px}.modal-image-wrap img{min-height:240px}}
