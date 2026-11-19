@@ -390,7 +390,7 @@
           link.style.setProperty("--mag-y", "0px");
         });
       });
-      const magneticWords = $(".magnetic-word");
+      const magneticWords = document.querySelectorAll(".magnetic-word");
       if (magneticWords.length) {
         const heading = magneticWords[0].closest(".contact-heading");
         if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
