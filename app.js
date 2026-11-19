@@ -417,7 +417,7 @@
         const rect = dropCard.getBoundingClientRect();
         const x = (event.clientX - rect.left) / rect.width - .5;
         const y = (event.clientY - rect.top) / rect.height - .5;
-        dropImage.style.transform = `perspective(1000px) rotateX(${(-y * 11).toFixed(2)}deg) rotateY(${(x * 13).toFixed(2)}deg) translateZ(8px)`;
+        dropImage.style.transform = `perspective(1100px) rotateX(${(-y * 17).toFixed(2)}deg) rotateY(${(x * 21).toFixed(2)}deg) translate3d(${(x * 5).toFixed(1)}px,${(y * 5).toFixed(1)}px,18px) scale(1.025)`;
       });
       dropCard.addEventListener("pointerleave", () => { dropImage.style.transform = ""; });
     }
