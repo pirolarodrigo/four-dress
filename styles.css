@@ -356,3 +356,35 @@ html[data-theme="dark"] .size-guide-note{background:#1b1b1b;border-color:#383838
   .contact-link:focus-visible .contact-icon { animation: none; }
   .cart-trigger,.cart-trigger svg,.cart-count { transition: none; }
 }
+
+
+/* LET'S TALK: tipografía magnética con profundidad 3D. */
+.contact h2 { perspective: 900px; transform-style: preserve-3d; }
+.contact h2 .magnetic-word {
+  display: inline-block;
+  position: relative;
+  transform-style: preserve-3d;
+  will-change: transform;
+  transition: transform .32s cubic-bezier(.2,.8,.2,1), text-shadow .32s ease;
+  text-shadow: 0 1px 0 #888, 0 3px 0 #555, 0 9px 22px rgba(0,0,0,.28);
+}
+.contact h2 .magnetic-word-top { transform-origin: 15% 70%; }
+.contact h2 .magnetic-word-bottom { transform-origin: 80% 30%; }
+.contact h2:hover .magnetic-word {
+  text-shadow: 0 1px 0 #999, 0 3px 0 #666, 0 12px 28px rgba(0,0,0,.42);
+}
+.contact-heading { perspective: 1000px; }
+.ticker div {
+  animation-duration: 16s;
+  transform-style: preserve-3d;
+  text-shadow: 0 1px 0 #777, 0 2px 0 #555, 0 5px 14px rgba(0,0,0,.3);
+  will-change: transform;
+}
+.ticker:hover div { animation-play-state: paused; }
+@media (max-width: 600px) {
+  .contact h2 .magnetic-word { text-shadow: 0 1px 0 #777, 0 3px 0 #555, 0 7px 15px rgba(0,0,0,.3); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ticker div { animation-duration: 26s; }
+  .contact h2 .magnetic-word { transition: none; text-shadow: none; }
+}
