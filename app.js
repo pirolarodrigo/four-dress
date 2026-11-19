@@ -90,50 +90,71 @@
       const frame = $(".modal-image-wrap");
       const image = $("#modalImage");
       controls.replaceChildren();
-      frame.classList.remove("view-front", "view-back", "combined-views");
+      frame.classList.remove("view-front", "view-back", "combined-views", "vertical-views");
+      let currentView = "front";
 
-      if (product.combinedViews) {
-        frame.classList.add("combined-views", "view-front");
+      // Las placas originales de FOUR DRESS muestran dos vistas apiladas:
+      // se recorta la mitad superior/inferior y se permite girar arrastrando.
+      const views = product.views || {};
+      const hasTwoViews = product.combinedViews || (!views.front && !views.back);
+      if (hasTwoViews) {
+        frame.classList.add("vertical-views", "view-front");
         image.src = product.image;
         image.alt = product.name + " " + product.variant + " - frente";
-        [["front", "FRENTE"], ["back", "ESPALDA"]].forEach(([key, label]) => {
+        const setView = (view) => {
+          currentView = view;
+          frame.classList.toggle("view-front", view === "front");
+          frame.classList.toggle("view-back", view === "back");
+          image.alt = product.name + " " + product.variant + (view === "front" ? " - vista superior" : " - vista inferior");
+          controls.querySelectorAll("button").forEach(button => button.classList.toggle("active", button.dataset.view === view));
+        };
+        [["front","VISTA 1"],["back","VISTA 2"]].forEach(([key,label]) => {
           const button = document.createElement("button");
           button.type = "button";
+          button.dataset.view = key;
           button.textContent = label;
           button.classList.toggle("active", key === "front");
-          button.addEventListener("click", () => {
-            frame.classList.toggle("view-front", key === "front");
-            frame.classList.toggle("view-back", key === "back");
-            image.alt = product.name + " " + product.variant + " - " + label.toLowerCase();
-            controls.querySelectorAll("button").forEach(item => item.classList.toggle("active", item === button));
-          });
+          button.addEventListener("click", () => setView(key));
           controls.appendChild(button);
         });
-        $("#viewNote").textContent = "Vistas separadas desde la fotografía original.";
+
+        let dragStartX = null;
+        frame.onpointerdown = event => {
+          if (event.target.closest(".garment-views")) return;
+          dragStartX = event.clientX;
+          frame.setPointerCapture?.(event.pointerId);
+        };
+        frame.onpointerup = event => {
+          if (dragStartX === null) return;
+          const delta = event.clientX - dragStartX;
+          if (Math.abs(delta) > 22) setView(delta < 0 ? "back" : "front");
+          dragStartX = null;
+        };
+        frame.onpointercancel = () => { dragStartX = null; };
+        $("#viewNote").textContent = "Arrastrá a izquierda o derecha para alternar las dos vistas incluidas en la foto original.";
         return;
       }
 
-      const views = product.views || { front: product.image };
-      const labels = [["front", "FRENTE"], ["side", "COSTADO"], ["back", "ESPALDA"]];
-      labels.forEach(([key, label]) => {
+      frame.onpointerdown = null;
+      frame.onpointerup = null;
+      frame.onpointercancel = null;
+      const available = product.views || { front: product.image };
+      [["front","FRENTE"],["side","COSTADO"],["back","ESPALDA"]].forEach(([key,label]) => {
         const button = document.createElement("button");
         button.type = "button";
         button.textContent = label;
-        button.disabled = !views[key];
+        button.disabled = !available[key];
         button.classList.toggle("active", key === "front");
         button.addEventListener("click", () => {
-          if (!views[key]) return;
-          image.src = views[key];
+          if (!available[key]) return;
+          image.src = available[key];
           image.alt = product.name + " " + product.variant + " - " + label.toLowerCase();
           controls.querySelectorAll("button").forEach(item => item.classList.toggle("active", item === button));
           $("#viewNote").textContent = "";
         });
         controls.appendChild(button);
       });
-      const missing = labels.filter(([key]) => !views[key]).map(([, label]) => label.toLowerCase());
-      $("#viewNote").textContent = missing.length
-        ? "Las fotos de " + missing.join(" y ") + " se pueden sumar cuando estén disponibles."
-        : "";
+      $("#viewNote").textContent = "Las vistas adicionales se incorporarán cuando estén generadas y revisadas.";
     }
 
     function closeProduct() {
