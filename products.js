@@ -33,7 +33,8 @@ window.FOURDRESS_PRODUCTS = [
     "category": "Remeras",
     "image": "assets/remera-negra-oversize.jpeg",
     "price": null,
-    "description": "Calce oversize · Estampa gráfica"
+    "description": "Calce oversize · Estampa gráfica",
+    "combinedViews": true
   },
   {
     "id": "remera-negra-04",
@@ -42,7 +43,8 @@ window.FOURDRESS_PRODUCTS = [
     "category": "Remeras",
     "image": "assets/remera-negra-grafica.jpeg",
     "price": null,
-    "description": "Calce oversize · Estampa trasera"
+    "description": "Calce oversize · Estampa trasera",
+    "combinedViews": true
   },
   {
     "id": "remera-blanca",
@@ -51,7 +53,8 @@ window.FOURDRESS_PRODUCTS = [
     "category": "Remeras",
     "image": "assets/remera-blanca-oversize.jpeg",
     "price": null,
-    "description": "Calce oversize · Diseño FOUR DRESS"
+    "description": "Calce oversize · Diseño FOUR DRESS",
+    "combinedViews": true
   },
   {
     "id": "manga-larga-blanca",
