@@ -374,6 +374,35 @@
       }
     });
 
+    // Magnetismo leve para los accesos de contacto; se desactiva en pantallas táctiles.
+    if (window.matchMedia("(hover: hover) and (pointer: fine)").matches &&
+        !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      document.querySelectorAll(".magnetic-contact").forEach(link => {
+        link.addEventListener("pointermove", event => {
+          const rect = link.getBoundingClientRect();
+          const x = (event.clientX - rect.left - rect.width / 2) / rect.width;
+          const y = (event.clientY - rect.top - rect.height / 2) / rect.height;
+          link.style.setProperty("--mag-x", `${(x * 7).toFixed(1)}px`);
+          link.style.setProperty("--mag-y", `${(y * 7).toFixed(1)}px`);
+        });
+        link.addEventListener("pointerleave", () => {
+          link.style.setProperty("--mag-x", "0px");
+          link.style.setProperty("--mag-y", "0px");
+        });
+      });
+      const magneticWord = $(".magnetic-word");
+      if (magneticWord) {
+        const heading = magneticWord.closest(".contact-heading");
+        heading.addEventListener("pointermove", event => {
+          const rect = magneticWord.getBoundingClientRect();
+          const x = (event.clientX - rect.left - rect.width / 2) / rect.width;
+          const y = (event.clientY - rect.top - rect.height / 2) / rect.height;
+          magneticWord.style.transform = `translate(${(x * 5).toFixed(1)}px, ${(y * 5).toFixed(1)}px)`;
+        });
+        heading.addEventListener("pointerleave", () => { magneticWord.style.transform = ""; });
+      }
+    }
+
     renderProducts();
     renderCart();
     const requestedProduct = new URLSearchParams(window.location.search).get("producto");
