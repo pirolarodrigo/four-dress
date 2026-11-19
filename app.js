@@ -4,6 +4,35 @@
   const init = () => {
     const $ = (selector) => document.querySelector(selector);
     const products = Array.isArray(window.FOURDRESS_PRODUCTS) ? window.FOURDRESS_PRODUCTS : [];
+    const themeToggle = $("#themeToggle");
+    const themeColor = $("#themeColor");
+    const applyTheme = (theme) => {
+      const dark = theme === "dark";
+      document.documentElement.dataset.theme = dark ? "dark" : "light";
+      if (themeToggle) {
+        themeToggle.querySelector(".theme-toggle-icon").textContent = dark ? "☀" : "☾";
+        themeToggle.querySelector(".theme-toggle-label").textContent = dark ? "MODO CLARO" : "MODO OSCURO";
+        themeToggle.setAttribute("aria-label", dark ? "Activar modo claro" : "Activar modo oscuro");
+        themeToggle.title = dark ? "Activar modo claro" : "Activar modo oscuro";
+      }
+      if (themeColor) themeColor.setAttribute("content", dark ? "#090909" : "#f4f4f2");
+    };
+    let savedTheme = "light";
+    try {
+      const storedTheme = localStorage.getItem("fourDressTheme");
+      if (storedTheme === "dark" || storedTheme === "light") savedTheme = storedTheme;
+    } catch (error) {
+      console.warn("No se pudo recuperar la preferencia de tema.", error);
+    }
+    applyTheme(savedTheme);
+    if (themeToggle) {
+      themeToggle.addEventListener("click", () => {
+        const nextTheme = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+        applyTheme(nextTheme);
+        try { localStorage.setItem("fourDressTheme", nextTheme); }
+        catch (error) { console.warn("No se pudo guardar la preferencia de tema.", error); }
+      });
+    }
     const grid = $("#productGrid");
     if (!grid) {
       console.error("FOUR DRESS: no se encontró #productGrid.");
