@@ -307,3 +307,52 @@ html[data-theme="dark"] .size-guide-note{background:#1b1b1b;border-color:#383838
   .filter { font-size: 8px; }
   .contact-caption { max-width: 260px; }
 }
+
+
+/* Animación sutil para contacto y carrito, también visible en pantallas táctiles. */
+.contact-icon {
+  animation: contact-icon-float 3.6s ease-in-out infinite;
+}
+.contact-link:nth-child(2) .contact-icon { animation-delay: -1.1s; }
+.contact-link:hover .contact-icon,
+.contact-link:focus-visible .contact-icon {
+  animation: contact-icon-spin .65s cubic-bezier(.2,.8,.2,1);
+}
+@keyframes contact-icon-float {
+  0%,100% { transform: translateY(0) rotate(0); }
+  50% { transform: translateY(-4px) rotate(4deg); }
+}
+@keyframes contact-icon-spin {
+  0% { transform: rotate(0) scale(1); }
+  55% { transform: rotate(205deg) scale(1.13); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+.cart-trigger {
+  transition: transform .22s ease, opacity .22s ease;
+}
+.cart-trigger svg {
+  transform-origin: 50% 45%;
+  transition: transform .35s cubic-bezier(.2,.8,.2,1);
+}
+.cart-trigger:hover { transform: translateY(-2px); }
+.cart-trigger:hover svg,
+.cart-trigger:focus-visible svg {
+  transform: rotate(-13deg) scale(1.12);
+}
+.cart-count {
+  transition: transform .22s ease, background .22s ease;
+}
+.cart-trigger:hover .cart-count,
+.cart-trigger:focus-visible .cart-count {
+  transform: scale(1.16);
+}
+@media (hover: none) {
+  .cart-trigger:active svg { transform: rotate(-16deg) scale(1.12); }
+  .contact-link:active .contact-icon { animation: contact-icon-spin .65s ease; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .contact-icon { animation: none; }
+  .contact-link:hover .contact-icon,
+  .contact-link:focus-visible .contact-icon { animation: none; }
+  .cart-trigger,.cart-trigger svg,.cart-count { transition: none; }
+}
