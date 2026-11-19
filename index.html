@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=9">
+  <link rel="stylesheet" href="styles.css?v=10">
 </head>
 <body>
   <div class="announcement"><span>FOUR DRESS / SPRING — SUMMER</span><span>JUST ONE. NO MORE.</span></div>
@@ -111,10 +111,28 @@
       <div class="modal-image-wrap"><img id="modalImage" src="" alt=""><div class="garment-views" id="garmentViews" aria-label="Vistas de la prenda"></div><p class="view-note" id="viewNote" aria-live="polite"></p></div>
       <div class="modal-info"><p class="eyebrow" id="modalCategory">FOUR DRESS / PRODUCT</p><h2 id="modalName"></h2><p class="modal-variant" id="modalVariant"></p><p class="modal-description" id="modalDescription"></p>
         <label for="sizeSelect">TALLE</label><select id="sizeSelect"><option value="S">S</option><option value="M" selected>M</option><option value="L">L</option><option value="XL">XL</option></select>
+        <div class="product-extra-actions"><button type="button" class="text-action" id="openSizeGuide">GUÍA DE TALLES ↗</button><button type="button" class="text-action" id="shareProduct">COMPARTIR ↗</button></div>
         <div class="modal-actions"><div class="quantity-control"><button id="qtyMinus" aria-label="Restar">−</button><span id="modalQty">1</span><button id="qtyPlus" aria-label="Sumar">+</button></div><button type="button" class="button button-yellow" id="addToCart">AGREGAR AL CARRITO <span>+</span></button></div>
         <p class="price-placeholder">PRECIO: A CONSULTAR</p>
       </div>
     </div>
+  </div>
+
+  <div class="size-guide-modal" id="sizeGuideModal" aria-hidden="true">
+    <div class="modal-backdrop" id="sizeGuideBackdrop"></div>
+    <section class="size-guide-card" role="dialog" aria-modal="true" aria-labelledby="sizeGuideTitle">
+      <button type="button" class="modal-close" id="sizeGuideClose" aria-label="Cerrar">×</button>
+      <p class="eyebrow">FOUR DRESS / FIT GUIDE</p>
+      <h2 id="sizeGuideTitle">GUÍA DE<br><span>TALLES.</span></h2>
+      <p class="size-guide-intro">Nuestras prendas tienen calce oversize. Para elegir con más seguridad, compará las medidas de una prenda tuya con las medidas de la prenda FOUR DRESS.</p>
+      <div class="size-guide-steps">
+        <article><strong>01 / ANCHO</strong><p>Extendé la prenda sobre una superficie plana y medí de axila a axila, en línea recta.</p></article>
+        <article><strong>02 / LARGO</strong><p>Medí desde el punto más alto del hombro hasta el borde inferior.</p></article>
+        <article><strong>03 / COMPARÁ</strong><p>Elegí una prenda de calce parecido y compará ambas medidas antes de seleccionar el talle.</p></article>
+      </div>
+      <div class="size-guide-note"><strong>IMPORTANTE</strong><p>La tabla en centímetros se va a incorporar cuando estén confirmadas las medidas reales de cada modelo. No usamos equivalencias estimadas para no recomendarte un talle incorrecto.</p></div>
+      <a class="button button-yellow size-help-whatsapp" id="sizeHelpWhatsapp" href="#" target="_blank" rel="noreferrer">CONSULTAR MI TALLE POR WHATSAPP ↗</a>
+    </section>
   </div>
 
   <div class="checkout-modal" id="checkoutModal" aria-hidden="true">
@@ -132,6 +150,6 @@
   </div>
   <div class="toast" id="toast" role="status"></div>
   <script src="products.js?v=7" defer></script>
-  <script src="app.js?v=11" defer></script>
+  <script src="app.js?v=12" defer></script>
 </body>
 </html>
