@@ -82,3 +82,9 @@ footer{border-color:#d7d7d2;color:#777}.footer-brand{color:#151515}.footer-brand
 .text-link{border-color:#333}
 .garment-views button.active{border-color:#151515}
 .product-grid{scrollbar-color:#777 #e4e4df}
+
+/* Recorte de la foto compuesta de remeras: alterna entre frente y espalda. */
+.modal-image-wrap.combined-views{overflow:hidden}
+.modal-image-wrap.combined-views #modalImage{position:absolute;left:0;top:0;width:200%;height:calc(100% - 52px);max-height:none;min-height:0;object-fit:cover;object-position:center;transition:transform .35s ease}
+.modal-image-wrap.combined-views.view-front #modalImage{transform:translateX(0)}
+.modal-image-wrap.combined-views.view-back #modalImage{transform:translateX(-50%)}
