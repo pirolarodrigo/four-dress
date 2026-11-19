@@ -6,7 +6,8 @@ window.FOURDRESS_PRODUCTS = [
     "category": "Buzos",
     "image": "assets/buzo-marron-oversize.jpeg",
     "price": null,
-    "description": "Calce oversize · Diseño FOUR DRESS"
+    "description": "Calce oversize · Diseño FOUR DRESS",
+    "combinedViews": true
   },
   {
     "id": "buzo-negro",
@@ -15,7 +16,8 @@ window.FOURDRESS_PRODUCTS = [
     "category": "Buzos",
     "image": "assets/buzo-negro-oversize.jpeg",
     "price": null,
-    "description": "Calce oversize · Diseño FOUR DRESS"
+    "description": "Calce oversize · Diseño FOUR DRESS",
+    "combinedViews": true
   },
   {
     "id": "buzo-blanco",
@@ -24,7 +26,8 @@ window.FOURDRESS_PRODUCTS = [
     "category": "Buzos",
     "image": "assets/buzo-blanco-oversize.jpeg",
     "price": null,
-    "description": "Calce oversize · Diseño FOUR DRESS"
+    "description": "Calce oversize · Diseño FOUR DRESS",
+    "combinedViews": true
   },
   {
     "id": "remera-negra",
@@ -34,6 +37,7 @@ window.FOURDRESS_PRODUCTS = [
     "image": "assets/remera-negra-oversize.jpeg",
     "price": null,
     "description": "Calce oversize · Estampa gráfica",
+    "combinedViews": true,
     "combinedViews": true
   },
   {
@@ -44,6 +48,7 @@ window.FOURDRESS_PRODUCTS = [
     "image": "assets/remera-negra-grafica.jpeg",
     "price": null,
     "description": "Calce oversize · Estampa trasera",
+    "combinedViews": true,
     "combinedViews": true
   },
   {
@@ -54,6 +59,7 @@ window.FOURDRESS_PRODUCTS = [
     "image": "assets/remera-blanca-oversize.jpeg",
     "price": null,
     "description": "Calce oversize · Diseño FOUR DRESS",
+    "combinedViews": true,
     "combinedViews": true
   },
   {
@@ -63,7 +69,8 @@ window.FOURDRESS_PRODUCTS = [
     "category": "Manga larga",
     "image": "assets/remera-manga-larga-blanca.jpeg",
     "price": null,
-    "description": "Manga larga · Calce oversize"
+    "description": "Manga larga · Calce oversize",
+    "combinedViews": true
   },
   {
     "id": "chomba-blanca",
@@ -72,6 +79,7 @@ window.FOURDRESS_PRODUCTS = [
     "category": "Manga larga",
     "image": "assets/chomba-blanca-manga-larga.jpeg",
     "price": null,
-    "description": "Chomba · Manga larga · Calce oversize"
+    "description": "Chomba · Manga larga · Calce oversize",
+    "combinedViews": true
   }
 ];
