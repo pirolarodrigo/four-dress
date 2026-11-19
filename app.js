@@ -390,16 +390,23 @@
           link.style.setProperty("--mag-y", "0px");
         });
       });
-      const magneticWord = $(".magnetic-word");
-      if (magneticWord) {
-        const heading = magneticWord.closest(".contact-heading");
-        heading.addEventListener("pointermove", event => {
-          const rect = magneticWord.getBoundingClientRect();
-          const x = (event.clientX - rect.left - rect.width / 2) / rect.width;
-          const y = (event.clientY - rect.top - rect.height / 2) / rect.height;
-          magneticWord.style.transform = `translate(${(x * 5).toFixed(1)}px, ${(y * 5).toFixed(1)}px)`;
-        });
-        heading.addEventListener("pointerleave", () => { magneticWord.style.transform = ""; });
+      const magneticWords = $(".magnetic-word");
+      if (magneticWords.length) {
+        const heading = magneticWords[0].closest(".contact-heading");
+        if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+          heading.addEventListener("pointermove", event => {
+            magneticWords.forEach((word, index) => {
+              const rect = word.getBoundingClientRect();
+              const x = Math.max(-1, Math.min(1, (event.clientX - rect.left - rect.width / 2) / (rect.width * 0.8)));
+              const y = Math.max(-1, Math.min(1, (event.clientY - rect.top - rect.height / 2) / (rect.height * 1.2)));
+              const direction = index === 0 ? -1 : 1;
+              word.style.transform = `perspective(700px) translate3d(${(x * 9).toFixed(1)}px, ${(y * 6 * direction).toFixed(1)}px, 18px) rotateX(${(y * -7).toFixed(1)}deg) rotateY(${(x * 9).toFixed(1)}deg)`;
+            });
+          });
+          heading.addEventListener("pointerleave", () => {
+            magneticWords.forEach(word => { word.style.transform = ""; });
+          });
+        }
       }
     }
 
