@@ -473,3 +473,19 @@ footer {
  .drop-image-inner{aspect-ratio:1.65/1}
 }
 @media(prefers-reduced-motion:reduce){.drop-image-inner,.drop-image-inner img,.drop-image-inner::after{transition:none}}
+
+
+/* Ajustes de identidad en tema claro y título de temporada. */
+.footer-brand img { mix-blend-mode: multiply; }
+html[data-theme="dark"] .footer-brand img { mix-blend-mode: screen; }
+.drop-heading h2 .drop-summer {
+  color: var(--muted);
+  font-size: .43em;
+  letter-spacing: -.015em;
+  vertical-align: .16em;
+  text-shadow: none;
+  margin-left: .08em;
+}
+@media(max-width:700px) {
+  .drop-heading h2 .drop-summer { font-size: .39em; }
+}
