@@ -189,6 +189,47 @@
       $("#productModal").classList.remove("open");
       $("#productModal").setAttribute("aria-hidden", "true");
     }
+    const productUrl = product => {
+      const url = new URL(window.location.href);
+      url.search = "";
+      url.hash = "";
+      url.searchParams.set("producto", product.id);
+      return url.toString();
+    };
+
+    function shareProduct(product) {
+      if (!product) return;
+      const url = productUrl(product);
+      const text = `Mirá ${product.name} ${product.variant} de FOUR DRESS.`;
+      const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(text + " " + url)}`;
+      if (navigator.share) {
+        navigator.share({ title: "FOUR DRESS — " + product.name, text, url }).catch(error => {
+          if (error.name !== "AbortError") window.open(whatsappUrl, "_blank", "noopener");
+        });
+        return;
+      }
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(url).then(() => showToast("ENLACE DEL PRODUCTO COPIADO")).catch(() => {
+          window.open(whatsappUrl, "_blank", "noopener");
+        });
+      } else {
+        window.open(whatsappUrl, "_blank", "noopener");
+      }
+    }
+
+    function openSizeGuide() {
+      if (!activeProduct) return;
+      const message = `Hola FOUR DRESS! Quiero consultar qué talle me recomiendan para ${activeProduct.name} ${activeProduct.variant}. ¿Me pueden pasar las medidas disponibles?`;
+      $("#sizeHelpWhatsapp").href = `https://wa.me/5493437453535?text=${encodeURIComponent(message)}`;
+      $("#sizeGuideModal").classList.add("open");
+      $("#sizeGuideModal").setAttribute("aria-hidden", "false");
+    }
+
+    function closeSizeGuide() {
+      $("#sizeGuideModal").classList.remove("open");
+      $("#sizeGuideModal").setAttribute("aria-hidden", "true");
+    }
+
 
     function renderCart() {
       $("#cartCount").textContent = cart.reduce((sum, item) => sum + item.qty, 0);
@@ -235,6 +276,10 @@
 
     $("#modalClose").addEventListener("click", closeProduct);
     $("#modalBackdrop").addEventListener("click", closeProduct);
+    $("#openSizeGuide").addEventListener("click", openSizeGuide);
+    $("#sizeGuideClose").addEventListener("click", closeSizeGuide);
+    $("#sizeGuideBackdrop").addEventListener("click", closeSizeGuide);
+    $("#shareProduct").addEventListener("click", () => shareProduct(activeProduct));
     $("#qtyMinus").addEventListener("click", () => {
       modalQty = Math.max(1, modalQty - 1);
       $("#modalQty").textContent = modalQty;
@@ -323,6 +368,7 @@
     document.addEventListener("keydown", event => {
       if (event.key === "Escape") {
         closeProduct();
+        closeSizeGuide();
         closeCheckout();
         closeCart();
       }
@@ -330,6 +376,11 @@
 
     renderProducts();
     renderCart();
+    const requestedProduct = new URLSearchParams(window.location.search).get("producto");
+    if (requestedProduct) {
+      const match = products.find(product => product.id === requestedProduct);
+      if (match) openProduct(match);
+    }
     console.info("FOUR DRESS: interacciones inicializadas.", { products: products.length });
   };
 
