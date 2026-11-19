@@ -220,3 +220,35 @@ html[data-theme="dark"] .size-guide-note{background:#1b1b1b;border-color:#383838
 .size-guide-modal.open{pointer-events:auto}
 .size-guide-modal:not(.open) .modal-backdrop{pointer-events:none}
 .size-guide-modal.open .modal-backdrop{pointer-events:auto}
+
+
+/* Contacto interactivo: magnetismo sutil y estética monocromática. */
+.contact-heading{position:relative}
+.contact-caption{margin:24px 0 0;color:#888;font-size:9px;letter-spacing:.13em;line-height:1.8}
+.magnetic-word{display:inline-block;transition:transform .25s cubic-bezier(.2,.8,.2,1)}
+.contact-links{display:grid;gap:12px}
+.contact-link{--mag-x:0px;--mag-y:0px;display:grid;grid-template-columns:54px 1fr 22px;align-items:center;gap:17px;min-height:88px;padding:15px 18px;border:1px solid var(--line);background:var(--panel);transition:transform .22s cubic-bezier(.2,.8,.2,1),border-color .22s,background .22s;will-change:transform}
+.contact-link:hover,.contact-link:focus-visible{transform:translate(var(--mag-x),var(--mag-y));border-color:#888;background:var(--panel2);outline:none}
+.contact-icon{width:48px;height:48px;border:1px solid #555;border-radius:50%;display:grid;place-items:center;transition:transform .25s,background .25s,border-color .25s}
+.contact-icon svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.contact-icon .icon-fill{fill:currentColor;stroke:none}
+.contact-link:hover .contact-icon,.contact-link:focus-visible .contact-icon{transform:scale(1.09) rotate(-7deg);background:var(--white);color:var(--bg);border-color:var(--white)}
+.contact-link-copy{display:grid;gap:7px;min-width:0}
+.contact-link-copy>span{font-size:8px;letter-spacing:.17em;color:#888;font-weight:800}
+.contact-link-copy strong{font-size:clamp(11px,1.2vw,14px);font-weight:700;overflow-wrap:anywhere}
+.contact-arrow{font-size:19px;color:#888;transition:transform .22s,color .22s}
+.contact-link:hover .contact-arrow,.contact-link:focus-visible .contact-arrow{transform:translate(3px,-3px);color:var(--white)}
+.hero-copy .eyebrow,.hero-copy h1,.hero-copy .hero-description,.hero-copy>.button{animation:hero-arrive .75s both}
+.hero-copy h1{animation-delay:.08s}
+.hero-copy .hero-description{animation-delay:.16s}
+.hero-copy>.button{animation-delay:.24s}
+@keyframes hero-arrive{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:600px){
+  .contact-link{grid-template-columns:44px minmax(0,1fr) 18px;gap:12px;min-height:76px;padding:12px}
+  .contact-icon{width:40px;height:40px}
+  .contact-caption{font-size:8px}
+}
+@media(prefers-reduced-motion:reduce){
+  .hero-copy .eyebrow,.hero-copy h1,.hero-copy .hero-description,.hero-copy>.button{animation:none}
+  .contact-link,.contact-icon,.contact-arrow,.magnetic-word{transition:none}
+}
