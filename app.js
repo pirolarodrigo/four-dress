@@ -122,7 +122,6 @@
         frame.onpointerdown = event => {
           if (event.target.closest(".garment-views")) return;
           dragStartX = event.clientX;
-          frame.setPointerCapture?.(event.pointerId);
         };
         frame.onpointerup = event => {
           if (dragStartX === null) return;
@@ -215,16 +214,38 @@
       modalQty = Math.min(10, modalQty + 1);
       $("#modalQty").textContent = modalQty;
     });
-    $("#addToCart").addEventListener("click", () => {
-      if (!activeProduct) return;
-      const size = $("#sizeSelect").value;
+    // Delegación global para que el botón siga funcionando aunque se actualice el contenido del modal.
+    document.addEventListener("click", event => {
+      const addButton = event.target.closest("#addToCart");
+      if (!addButton) return;
+      event.preventDefault();
+      event.stopPropagation();
+      if (!activeProduct) {
+        showToast("NO SE PUDO IDENTIFICAR LA PRENDA. VOLVÉ A ABRIRLA.");
+        return;
+      }
+      const sizeSelect = $("#sizeSelect");
+      const size = sizeSelect ? sizeSelect.value : "M";
       const existing = cart.find(item => item.id === activeProduct.id && item.size === size);
-      if (existing) existing.qty += modalQty;
-      else cart.push({ ...activeProduct, size, qty: modalQty });
+      if (existing) {
+        existing.qty += modalQty;
+      } else {
+        cart.push({
+          id: activeProduct.id,
+          name: activeProduct.name,
+          variant: activeProduct.variant,
+          category: activeProduct.category,
+          image: activeProduct.image,
+          price: activeProduct.price ?? null,
+          size,
+          qty: modalQty
+        });
+      }
       renderCart();
       closeProduct();
-      showToast("AGREGADO A TU CARRITO");
-    });
+      openCart();
+      showToast("PRENDA AGREGADA AL CARRITO");
+    }, true);
 
     $("#cartItems").addEventListener("click", event => {
       const button = event.target.closest("[data-remove]");
