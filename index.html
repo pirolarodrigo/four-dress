@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090909">
+  <meta name="description" content="FOUR DRESS — indumentaria urbana. Descubrí la colección.">
+  <title>FOUR DRESS — Wear your point of view</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="announcement"><span>FOUR DRESS / SPRING — SUMMER</span><span>JUST ONE. NO MORE.</span></div>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="FOUR DRESS inicio">
+      <img src="assets/logo-fourdress.jpeg" alt="FOUR DRESS">
+    </a>
+    <nav class="main-nav" aria-label="Navegación principal">
+      <a href="#coleccion">COLECCIÓN</a>
+      <a href="#marca">LA MARCA</a>
+      <a href="#contacto">CONTACTO</a>
+    </nav>
+    <button class="cart-trigger" id="openCart" aria-label="Abrir carrito">
+      <span class="cart-label">CARRITO</span><span class="cart-count" id="cartCount">0</span>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2l2.1 11.1a2 2 0 0 0 2 1.6h8.7a2 2 0 0 0 1.9-1.4L22 8H6M10 21a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm8 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z"/></svg>
+    </button>
+    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">☰</button>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="yellow-dot"></span> INDEPENDENT STREETWEAR / ARGENTINA</p>
+        <h1>WEAR YOUR<br><span>POINT OF VIEW.</span></h1>
+        <p class="hero-description">No seguimos el ruido. Elegimos nuestro propio camino.<br>Descubrí la colección FOUR DRESS.</p>
+        <a class="button button-yellow" href="#coleccion">EXPLORAR COLECCIÓN <span>↘</span></a>
+      </div>
+      <div class="hero-art">
+        <div class="hero-index">FD—001 / COLLECTION</div>
+        <img src="assets/campana-coleccion.jpeg" alt="Selección de prendas FOUR DRESS">
+        <div class="hero-stamp">F<br>D.</div>
+        <div class="hero-bottomline"><span>BUILT TO STAND OUT</span><span>01 — 08</span></div>
+      </div>
+      <div class="hero-side-note">FOUR DRESS · EST. 2026</div>
+    </section>
+
+    <section class="ticker" aria-label="Lema de la marca"><div>JUST ONE. NO MORE. <b>✳</b> FOUR DRESS <b>✳</b> JUST ONE. NO MORE. <b>✳</b> FOUR DRESS <b>✳</b></div></section>
+
+    <section class="collection section-wrap" id="coleccion">
+      <div class="section-heading">
+        <div><p class="eyebrow">01 / THE DROP</p><h2>THE <span>COLLECTION.</span></h2></div>
+        <p class="section-intro">Piezas para todos los días.<br>Una identidad que no necesita explicación.</p>
+      </div>
+      <div class="collection-tools">
+        <div class="filters" id="filters">
+          <button class="filter active" data-filter="Todos">TODOS <span>08</span></button>
+          <button class="filter" data-filter="Remeras">REMERAS</button>
+          <button class="filter" data-filter="Buzos">BUZOS</button>
+          <button class="filter" data-filter="Manga larga">MANGA LARGA</button>
+        </div>
+        <span class="hover-hint"><i></i> PASÁ EL MOUSE PARA EXPLORAR</span>
+      </div>
+      <div class="rack-scene">
+        <div class="rack-top"><span>F / D</span><span>SELECTED GARMENTS</span><span>2026</span></div>
+        <div class="rack-rail"><span class="rail-cap left"></span><span class="rail-cap right"></span></div>
+        <div class="product-grid" id="productGrid"></div>
+        <div class="rack-floor"></div>
+      </div>
+      <p class="collection-footnote"><span>✳</span> MÁS QUE UNA PRENDA. UNA FORMA DE SER.</p>
+    </section>
+
+    <section class="manifesto" id="marca">
+      <div class="manifesto-mark">FD<span>.</span></div>
+      <div class="manifesto-content">
+        <p class="eyebrow">02 / OUR POINT OF VIEW</p>
+        <h2>JUST ONE.<br><span>NO MORE.</span></h2>
+        <p>FOUR DRESS nace de una idea simple: vestir lo que somos, sin pedir permiso. Diseños con identidad propia, pensados para formar parte de tu día a día.</p>
+        <a href="https://www.instagram.com/fourdress.a/" target="_blank" rel="noreferrer" class="text-link">SEGUINOS EN INSTAGRAM ↗</a>
+      </div>
+      <div class="manifesto-image"><img src="assets/lookbook-modelos.jpeg" alt="Lookbook FOUR DRESS"></div>
+    </section>
+
+    <section class="contact section-wrap" id="contacto">
+      <div><p class="eyebrow">03 / GET IN TOUCH</p><h2>LET'S<br><span>TALK.</span></h2></div>
+      <div class="contact-links">
+        <a href="https://www.instagram.com/fourdress.a/" target="_blank" rel="noreferrer"><span>INSTAGRAM</span><strong>@fourdress.a ↗</strong></a>
+        <a href="mailto:alanlacombe01@gmail.com"><span>EMAIL</span><strong>alanlacombe01@gmail.com ↗</strong></a>
+      </div>
+    </section>
+  </main>
+
+  <footer><a href="#top" class="footer-brand">FOUR DRESS<span>.</span></a><span>INDEPENDENT STREETWEAR — 2026</span><a href="#top">BACK TO TOP ↑</a></footer>
+
+  <div class="cart-backdrop" id="cartBackdrop"></div>
+  <aside class="cart-drawer" id="cartDrawer" aria-label="Carrito de compras" aria-hidden="true">
+    <div class="cart-header"><div><p class="eyebrow">YOUR SELECTION</p><h2>YOUR BAG<span>.</span></h2></div><button id="closeCart" class="close-cart" aria-label="Cerrar carrito">×</button></div>
+    <div class="cart-items" id="cartItems"><div class="empty-cart">TU CARRITO ESTÁ VACÍO.<br><span>Hay algo esperando en la colección.</span></div></div>
+    <div class="cart-summary"><div class="subtotal"><span>SUBTOTAL</span><strong id="cartTotal">A consultar</strong></div><p class="cart-note">Los precios y disponibilidad se confirman al realizar el pedido.</p><button class="button button-yellow checkout-button" id="checkoutButton">CONTINUAR PEDIDO <span>↗</span></button></div>
+  </aside>
+
+  <div class="product-modal" id="productModal" aria-hidden="true">
+    <div class="modal-backdrop" id="modalBackdrop"></div>
+    <div class="modal-card">
+      <button class="modal-close" id="modalClose" aria-label="Cerrar">×</button>
+      <div class="modal-image-wrap"><img id="modalImage" src="" alt=""></div>
+      <div class="modal-info"><p class="eyebrow" id="modalCategory">FOUR DRESS / PRODUCT</p><h2 id="modalName"></h2><p class="modal-variant" id="modalVariant"></p><p class="modal-description" id="modalDescription"></p>
+        <label for="sizeSelect">TALLE</label><select id="sizeSelect"><option value="S">S</option><option value="M" selected>M</option><option value="L">L</option><option value="XL">XL</option></select>
+        <div class="modal-actions"><div class="quantity-control"><button id="qtyMinus" aria-label="Restar">−</button><span id="modalQty">1</span><button id="qtyPlus" aria-label="Sumar">+</button></div><button class="button button-yellow" id="addToCart">AGREGAR AL CARRITO <span>+</span></button></div>
+        <p class="price-placeholder">PRECIO: A CONSULTAR</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="checkout-modal" id="checkoutModal" aria-hidden="true">
+    <div class="modal-backdrop" id="checkoutBackdrop"></div>
+    <form class="checkout-card" id="checkoutForm">
+      <button type="button" class="modal-close" id="checkoutClose" aria-label="Cerrar">×</button>
+      <p class="eyebrow">ALMOST YOURS / FOUR DRESS</p><h2>FINALIZAR<br><span>PEDIDO.</span></h2>
+      <label for="customerName">NOMBRE Y APELLIDO</label><input id="customerName" name="name" required placeholder="Tu nombre">
+      <label for="customerEmail">EMAIL</label><input id="customerEmail" name="email" type="email" required placeholder="tu@email.com">
+      <label for="customerPhone">TELÉFONO</label><input id="customerPhone" name="phone" required placeholder="Tu número de contacto">
+      <label for="customerNotes">COMENTARIOS (OPCIONAL)</label><textarea id="customerNotes" name="notes" rows="3" placeholder="Consulta, dirección o aclaración..."></textarea>
+      <button class="button button-yellow checkout-button" type="submit">PREPARAR PEDIDO POR EMAIL ↗</button>
+      <p class="form-note">Se abrirá tu aplicación de correo con el detalle del pedido para enviarlo a FOUR DRESS.</p>
+    </form>
+  </div>
+  <div class="toast" id="toast" role="status"></div>
+  <script src="products.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
