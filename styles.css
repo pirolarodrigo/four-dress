@@ -447,3 +447,29 @@ footer {
 @media (prefers-reduced-motion: reduce) {
   .footer-brand, .back-to-top, .back-to-top span { transition: none; }
 }
+
+
+/* DROP #1: imagen de campaña con profundidad y respuesta magnética. */
+.drop-heading{align-items:center;gap:clamp(28px,6vw,90px);margin-bottom:48px}
+.drop-heading-copy{flex:1 1 52%;min-width:0}
+.drop-heading h2{font-size:clamp(76px,11vw,154px);line-height:.78;letter-spacing:-.045em;white-space:nowrap}
+.drop-heading h2 span{color:var(--white);display:inline-block;text-shadow:0 2px 0 #777,0 5px 0 #444,0 13px 26px rgba(0,0,0,.45)}
+.drop-heading .section-intro{margin-top:25px}
+.drop-image-card{flex:0 1 36%;width:min(36%,390px);min-width:230px;perspective:1000px;transform-style:preserve-3d}
+.drop-image-inner{position:relative;overflow:hidden;aspect-ratio:1.42/1;border:1px solid #444;background:#111;transform:perspective(1000px) rotateX(0) rotateY(0) translateZ(0);transform-style:preserve-3d;transition:transform .18s ease-out,box-shadow .3s ease,border-color .3s ease;box-shadow:0 14px 34px rgba(0,0,0,.28);will-change:transform}
+.drop-image-inner::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(135deg,rgba(255,255,255,.13),transparent 38%,rgba(0,0,0,.28));opacity:.7;transition:opacity .3s ease}
+.drop-image-inner img{display:block;width:100%;height:100%;object-fit:cover;filter:grayscale(1);transform:scale(1.015);transition:transform .65s cubic-bezier(.2,.8,.2,1),filter .45s ease}
+.drop-image-index,.drop-image-caption{position:absolute;z-index:1;left:16px;color:#f4f4f0;font-size:8px;font-weight:800;letter-spacing:.17em;text-shadow:0 1px 8px rgba(0,0,0,.8);transform:translateZ(28px)}
+.drop-image-index{top:14px}
+.drop-image-caption{bottom:14px;font-size:11px;letter-spacing:.2em}
+.drop-image-card:hover .drop-image-inner{box-shadow:0 24px 48px rgba(0,0,0,.48);border-color:#888}
+.drop-image-card:hover .drop-image-inner img{transform:scale(1.075);filter:grayscale(.72)}
+.drop-image-card:hover .drop-image-inner::after{opacity:1}
+@media(max-width:700px){
+ .drop-heading{align-items:flex-start;flex-direction:column;gap:28px;margin-bottom:38px}
+ .drop-heading h2{font-size:clamp(68px,17vw,108px)}
+ .drop-heading .section-intro{margin-top:18px}
+ .drop-image-card{width:100%;min-width:0;max-width:430px;align-self:flex-end}
+ .drop-image-inner{aspect-ratio:1.65/1}
+}
+@media(prefers-reduced-motion:reduce){.drop-image-inner,.drop-image-inner img,.drop-image-inner::after{transition:none}}
