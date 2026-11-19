@@ -213,3 +213,10 @@ html[data-theme="dark"] .size-guide-note{background:#1b1b1b;border-color:#383838
   .size-guide-steps article{display:grid;grid-template-columns:105px 1fr;gap:10px}
   .size-guide-steps p{margin:0}
 }
+
+
+/* FIX: el backdrop de la guía de talles no debe bloquear la página cuando está cerrada. */
+.size-guide-modal:not(.open){pointer-events:none}
+.size-guide-modal.open{pointer-events:auto}
+.size-guide-modal:not(.open) .modal-backdrop{pointer-events:none}
+.size-guide-modal.open .modal-backdrop{pointer-events:auto}
