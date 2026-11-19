@@ -214,18 +214,19 @@
       modalQty = Math.min(10, modalQty + 1);
       $("#modalQty").textContent = modalQty;
     });
-    // Delegación global para que el botón siga funcionando aunque se actualice el contenido del modal.
-    document.addEventListener("click", event => {
-      const addButton = event.target.closest("#addToCart");
-      if (!addButton) return;
+    // El botón existe de forma fija en index.html: enlazarlo directamente evita
+    // depender de delegación global o de otros listeners de clic.
+    $("#addToCart").addEventListener("click", event => {
       event.preventDefault();
       event.stopPropagation();
+
       if (!activeProduct) {
         showToast("NO SE PUDO IDENTIFICAR LA PRENDA. VOLVÉ A ABRIRLA.");
+        console.error("FOUR DRESS: intento de agregar sin producto activo.");
         return;
       }
-      const sizeSelect = $("#sizeSelect");
-      const size = sizeSelect ? sizeSelect.value : "M";
+
+      const size = $("#sizeSelect").value || "M";
       const existing = cart.find(item => item.id === activeProduct.id && item.size === size);
       if (existing) {
         existing.qty += modalQty;
@@ -241,11 +242,13 @@
           qty: modalQty
         });
       }
+
       renderCart();
       closeProduct();
       openCart();
       showToast("PRENDA AGREGADA AL CARRITO");
-    }, true);
+      console.info("FOUR DRESS: producto agregado.", { id: activeProduct.id, size, qty: modalQty });
+    });
 
     $("#cartItems").addEventListener("click", event => {
       const button = event.target.closest("[data-remove]");
