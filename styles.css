@@ -252,3 +252,58 @@ html[data-theme="dark"] .size-guide-note{background:#1b1b1b;border-color:#383838
   .hero-copy .eyebrow,.hero-copy h1,.hero-copy .hero-description,.hero-copy>.button{animation:none}
   .contact-link,.contact-icon,.contact-arrow,.magnetic-word{transition:none}
 }
+
+
+/* Ajustes mobile: jerarquía, catálogo y tarjetas de contacto. */
+@media (max-width: 600px) {
+  .hero {
+    padding: 52px 6% 48px;
+    gap: 34px;
+  }
+  .hero-copy { width: 100%; min-width: 0; }
+  .hero h1 {
+    font-size: clamp(48px, 14.5vw, 72px);
+    line-height: .86;
+    letter-spacing: -.04em;
+  }
+  .hero-description br { display: none; }
+  .hero-art {
+    width: min(82%, 320px);
+    align-self: center;
+    margin-right: 0;
+    padding: 16px;
+    transform: rotate(1deg);
+  }
+  .hero-art img { height: clamp(230px, 70vw, 280px); }
+  .hero-stamp { right: -16px; bottom: 44px; font-size: 44px; }
+
+  .section-heading h2 {
+    font-size: clamp(42px, 12vw, 62px);
+    line-height: .9;
+  }
+  .product-grid { gap: 15px 12px; }
+  .product-card { flex-basis: min(76vw, 245px); }
+  .product-visual { height: clamp(230px, 72vw, 280px); }
+
+  .manifesto h2 { font-size: clamp(56px, 16vw, 72px); }
+  .contact h2 { font-size: clamp(68px, 20vw, 88px); }
+  .contact-links a.contact-link {
+    display: grid;
+    grid-template-columns: 44px minmax(0, 1fr) 18px;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+    min-height: 76px;
+    padding: 12px;
+  }
+  .contact-link-copy strong {
+    font-size: clamp(11px, 3vw, 14px);
+    overflow-wrap: anywhere;
+  }
+}
+@media (max-width: 360px) {
+  .hero h1 { font-size: 48px; }
+  .filters { gap: 12px; }
+  .filter { font-size: 8px; }
+  .contact-caption { max-width: 260px; }
+}
