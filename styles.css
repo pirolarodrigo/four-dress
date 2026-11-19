@@ -179,3 +179,37 @@ html[data-theme="dark"] .theme-toggle{border-color:#555;color:#f4f4f0}
 html[data-theme="dark"] .theme-toggle:hover{background:#bdbdbd;border-color:#bdbdbd;color:#090909}
 html[data-theme="dark"] .button-yellow:hover{background:#dedede}
 @media(max-width:600px){html[data-theme="dark"] .main-nav{background:#111;border-bottom-color:#333}}
+
+
+/* Guía de talles y acciones de producto. */
+.product-extra-actions{display:flex;justify-content:space-between;gap:12px;margin:12px 0 18px}
+.text-action{border:0;border-bottom:1px solid #aaa;background:transparent;color:inherit;padding:8px 0;font-size:8px;font-weight:800;letter-spacing:.1em;cursor:pointer}
+.text-action:hover{border-color:currentColor}
+.size-guide-modal{position:fixed;inset:0;z-index:60;display:grid;place-items:center;padding:20px;opacity:0;visibility:hidden;transition:.25s}
+.size-guide-modal.open{opacity:1;visibility:visible}
+.size-guide-modal .modal-backdrop{z-index:0;opacity:1;visibility:visible}
+.size-guide-card{position:relative;z-index:1;width:min(590px,100%);max-height:min(88dvh,850px);overflow:auto;background:#fff;color:#151515;border:1px solid #ddd;padding:34px}
+.size-guide-card .modal-close{position:absolute;right:20px;top:16px}
+.size-guide-card h2{font-family:var(--display);font-size:clamp(48px,8vw,76px);line-height:.82;letter-spacing:-.03em;margin:0 0 22px}
+.size-guide-card h2 span{color:#555}
+.size-guide-intro{font-size:12px;line-height:1.8;color:#666;max-width:470px;margin:0 0 25px}
+.size-guide-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.size-guide-steps article{border-top:1px solid #bbb;padding-top:12px}
+.size-guide-steps strong,.size-guide-note strong{font-size:9px;letter-spacing:.12em}
+.size-guide-steps p,.size-guide-note p{font-size:10px;line-height:1.8;color:#666;margin:9px 0 0}
+.size-guide-note{margin:22px 0;padding:15px;background:#f0f0ed;border:1px solid #e1e1dc}
+.size-guide-note p{margin-top:6px}
+.size-help-whatsapp{width:100%;margin-top:2px;text-align:center;justify-content:center}
+html[data-theme="dark"] .text-action{color:#f4f4f0;border-color:#666}
+html[data-theme="dark"] .size-guide-card{background:#111;color:#f4f4f0;border-color:#383838}
+html[data-theme="dark"] .size-guide-card h2 span{color:#bdbdbd}
+html[data-theme="dark"] .size-guide-intro,html[data-theme="dark"] .size-guide-steps p,html[data-theme="dark"] .size-guide-note p{color:#aaa}
+html[data-theme="dark"] .size-guide-steps article{border-color:#555}
+html[data-theme="dark"] .size-guide-note{background:#1b1b1b;border-color:#383838}
+@media(max-width:600px){
+  .product-extra-actions{gap:16px}
+  .size-guide-card{padding:28px 22px}
+  .size-guide-steps{grid-template-columns:1fr;gap:14px}
+  .size-guide-steps article{display:grid;grid-template-columns:105px 1fr;gap:10px}
+  .size-guide-steps p{margin:0}
+}
