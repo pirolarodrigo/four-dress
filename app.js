@@ -49,11 +49,11 @@
         card.setAttribute("role", "button");
         card.setAttribute("aria-label", `Ver ${p.name}, ${p.variant}`);
         card.innerHTML = `
-          <div class="hanger"></div>
+          <div class="hanger"><span></span></div>
           <div class="product-visual">
             <span class="product-number">FD / ${String(products.indexOf(p) + 1).padStart(2, "0")}</span>
             <img src="${p.image}" alt="${p.name} ${p.variant}" loading="lazy">
-            <span class="product-open" aria-hidden="true">↗</span>
+            <span class="product-open" aria-hidden="true">VER PRENDA ↗</span>
           </div>
           <div class="product-meta">
             <div><div class="product-name">${p.name}</div><div class="product-variant">${p.variant}</div></div>
@@ -74,14 +74,45 @@
       activeProduct = product;
       modalQty = 1;
       $("#modalImage").src = product.image;
-      $("#modalImage").alt = product.name + " " + product.variant;
+      $("#modalImage").alt = product.name + " " + product.variant + " - frente";
       $("#modalName").textContent = product.name;
       $("#modalVariant").textContent = product.variant;
       $("#modalCategory").textContent = "FOUR DRESS / " + product.category.toUpperCase();
       $("#modalDescription").textContent = product.description || "";
       $("#modalQty").textContent = modalQty;
+      renderGarmentViews(product);
       $("#productModal").classList.add("open");
       $("#productModal").setAttribute("aria-hidden", "false");
+    }
+
+    function renderGarmentViews(product) {
+      const views = product.views || { front: product.image };
+      const labels = [
+        ["front", "FRENTE"],
+        ["side", "COSTADO"],
+        ["back", "ESPALDA"]
+      ];
+      const controls = $("#garmentViews");
+      controls.replaceChildren();
+      labels.forEach(([key, label]) => {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.textContent = label;
+        button.disabled = !views[key];
+        button.classList.toggle("active", key === "front");
+        button.addEventListener("click", () => {
+          if (!views[key]) return;
+          $("#modalImage").src = views[key];
+          $("#modalImage").alt = product.name + " " + product.variant + " - " + label.toLowerCase();
+          controls.querySelectorAll("button").forEach(item => item.classList.toggle("active", item === button));
+          $("#viewNote").textContent = "";
+        });
+        controls.appendChild(button);
+      });
+      const missing = labels.filter(([key]) => !views[key]).map(([, label]) => label.toLowerCase());
+      $("#viewNote").textContent = missing.length
+        ? "Las fotos de " + missing.join(" y ") + " se pueden sumar cuando estén disponibles."
+        : "";
     }
 
     function closeProduct() {
