@@ -96,3 +96,6 @@ footer{border-color:#d7d7d2;color:#777}.footer-brand{color:#151515}.footer-brand
 .modal-image-wrap.vertical-views.view-front #modalImage{transform:translateY(0)}
 .modal-image-wrap.vertical-views.view-back #modalImage{transform:translateY(-50%)}
 .modal-image-wrap.vertical-views .garment-views{z-index:3}
+
+/* FIX carrito: asegurar que la zona de información y el botón reciban el clic. */
+.modal-info{position:relative;z-index:2;pointer-events:auto}.modal-actions,#addToCart{position:relative;z-index:3;pointer-events:auto;cursor:pointer}
