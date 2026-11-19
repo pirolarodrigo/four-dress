@@ -410,6 +410,18 @@
       }
     }
 
+    const dropCard = document.querySelector(".drop-image-card");
+    const dropImage = dropCard?.querySelector(".drop-image-inner");
+    if (dropCard && dropImage && window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+      dropCard.addEventListener("pointermove", event => {
+        const rect = dropCard.getBoundingClientRect();
+        const x = (event.clientX - rect.left) / rect.width - .5;
+        const y = (event.clientY - rect.top) / rect.height - .5;
+        dropImage.style.transform = `perspective(1000px) rotateX(${(-y * 11).toFixed(2)}deg) rotateY(${(x * 13).toFixed(2)}deg) translateZ(8px)`;
+      });
+      dropCard.addEventListener("pointerleave", () => { dropImage.style.transform = ""; });
+    }
+
     renderProducts();
     renderCart();
     const requestedProduct = new URLSearchParams(window.location.search).get("producto");
