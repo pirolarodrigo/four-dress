@@ -20,16 +20,6 @@ window.FOURDRESS_PRODUCTS = [
     "combinedViews": true
   },
   {
-    "id": "buzo-blanco",
-    "name": "Buzo manga larga oversize",
-    "variant": "Blanco",
-    "category": "Buzos",
-    "image": "assets/buzo-blanco-oversize.jpeg",
-    "price": null,
-    "description": "Calce oversize · Diseño FOUR DRESS",
-    "combinedViews": true
-  },
-  {
     "id": "remera-negra",
     "name": "Remera oversize",
     "variant": "Negra · Estampa gráfica",
@@ -37,7 +27,6 @@ window.FOURDRESS_PRODUCTS = [
     "image": "assets/remera-negra-oversize.jpeg",
     "price": null,
     "description": "Calce oversize · Estampa gráfica",
-    "combinedViews": true,
     "combinedViews": true
   },
   {
