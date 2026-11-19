@@ -88,3 +88,11 @@ footer{border-color:#d7d7d2;color:#777}.footer-brand{color:#151515}.footer-brand
 .modal-image-wrap.combined-views #modalImage{position:absolute;left:0;top:0;width:200%;height:calc(100% - 52px);max-height:none;min-height:0;object-fit:cover;object-position:center;transition:transform .35s ease}
 .modal-image-wrap.combined-views.view-front #modalImage{transform:translateX(0)}
 .modal-image-wrap.combined-views.view-back #modalImage{transform:translateX(-50%)}
+
+
+/* Giro interactivo basado en las dos vistas incluidas en cada placa original. */
+.modal-image-wrap.vertical-views{overflow:hidden;touch-action:pan-y;cursor:ew-resize}
+.modal-image-wrap.vertical-views #modalImage{position:absolute;left:0;top:0;width:100%;height:200%;max-height:none;min-height:0;object-fit:cover;object-position:center top;transition:transform .32s ease;user-select:none;-webkit-user-drag:none}
+.modal-image-wrap.vertical-views.view-front #modalImage{transform:translateY(0)}
+.modal-image-wrap.vertical-views.view-back #modalImage{transform:translateY(-50%)}
+.modal-image-wrap.vertical-views .garment-views{z-index:3}
