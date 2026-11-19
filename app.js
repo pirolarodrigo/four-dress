@@ -86,14 +86,35 @@
     }
 
     function renderGarmentViews(product) {
-      const views = product.views || { front: product.image };
-      const labels = [
-        ["front", "FRENTE"],
-        ["side", "COSTADO"],
-        ["back", "ESPALDA"]
-      ];
       const controls = $("#garmentViews");
+      const frame = $(".modal-image-wrap");
+      const image = $("#modalImage");
       controls.replaceChildren();
+      frame.classList.remove("view-front", "view-back", "combined-views");
+
+      if (product.combinedViews) {
+        frame.classList.add("combined-views", "view-front");
+        image.src = product.image;
+        image.alt = product.name + " " + product.variant + " - frente";
+        [["front", "FRENTE"], ["back", "ESPALDA"]].forEach(([key, label]) => {
+          const button = document.createElement("button");
+          button.type = "button";
+          button.textContent = label;
+          button.classList.toggle("active", key === "front");
+          button.addEventListener("click", () => {
+            frame.classList.toggle("view-front", key === "front");
+            frame.classList.toggle("view-back", key === "back");
+            image.alt = product.name + " " + product.variant + " - " + label.toLowerCase();
+            controls.querySelectorAll("button").forEach(item => item.classList.toggle("active", item === button));
+          });
+          controls.appendChild(button);
+        });
+        $("#viewNote").textContent = "Vistas separadas desde la fotografía original.";
+        return;
+      }
+
+      const views = product.views || { front: product.image };
+      const labels = [["front", "FRENTE"], ["side", "COSTADO"], ["back", "ESPALDA"]];
       labels.forEach(([key, label]) => {
         const button = document.createElement("button");
         button.type = "button";
@@ -102,8 +123,8 @@
         button.classList.toggle("active", key === "front");
         button.addEventListener("click", () => {
           if (!views[key]) return;
-          $("#modalImage").src = views[key];
-          $("#modalImage").alt = product.name + " " + product.variant + " - " + label.toLowerCase();
+          image.src = views[key];
+          image.alt = product.name + " " + product.variant + " - " + label.toLowerCase();
           controls.querySelectorAll("button").forEach(item => item.classList.toggle("active", item === button));
           $("#viewNote").textContent = "";
         });
